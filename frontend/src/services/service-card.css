@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@1&family=Kanit:wght@800&family=Poppins:wght@300;700&display=swap');
+
+:root {
+  --primary-color: #ff7e01;
+  --secondary-color: #faa935;
+  --heading-color: #0b2727;
+  --text-color: #6e7074;
+  --XanhTim: hsl(244, 59%, 51%);
+  --font-name: "Montserrat", sans-serif;
+  --subtitle-font-name: "Island Moments", cursive;
+}
+
+.service__item {
+    padding: 1rem;
+    /*border-bottom: 0.5px solid linear-gradient(#FB7B8E, #031B88);
+    border-right: 0.5px solid linear-gradient(#FB7B8E, #031B88);*/
+    border-radius: 0.5rem;
+}
+
+.service__img {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background: linear-gradient(#FB7B8E, #031B88);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 50px;
+}
+
+.service__img img {
+    width: 100%;
+}
+
+.service__item h5{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.service__item p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}

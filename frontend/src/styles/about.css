@@ -1,0 +1,28 @@
+.introduction-container {
+    max-width: 80%;
+    margin: 20px auto 0; 
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin: 20px 0 20px; 
+}
+
+p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 15px 0 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0 0; 
+}
+
+li {
+    margin: 8px 0; 
+}

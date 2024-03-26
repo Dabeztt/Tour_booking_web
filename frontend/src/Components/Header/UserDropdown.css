@@ -1,0 +1,22 @@
+.dropdown-toggle {
+    transition: background-color 0.3s;
+}
+
+.dropdown-toggle:hover {
+    background-color: #f8f9fa; 
+}
+
+.dropdown-menu {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    min-width: 200px;
+}
+
+.dropdown-item {
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa; 
+    color: #007bff; 
+}

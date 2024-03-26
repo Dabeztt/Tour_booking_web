@@ -1,0 +1,82 @@
+.list-group a:hover {
+    background-color: rgb(46, 147, 224);
+    color: white;
+    cursor: pointer;
+}
+
+.admin-header {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-top: 42px;
+    text-align: center;
+}
+
+
+.admin-content {
+    padding: 20px;
+}
+
+  
+.admin-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.admin-content li {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+  
+.admin-content li p {
+  margin: 5px 0;
+}
+
+.admin-content li p:first-child {
+  font-weight: bold;
+}
+
+.admin-content li p:not(:first-child) {
+  color: #888; 
+}
+  
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-bottom: 20px;
+}
+
+.button-container button {
+  padding: 12px 24px; 
+  font-size: 16px; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #e0e0e0;
+}
+
+.add-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-button {
+  background-color: #2196f3;
+  color: white;
+  margin-right: 16px;
+  margin-top: 15px;
+  width: 10%;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  width: 10%;
+}
