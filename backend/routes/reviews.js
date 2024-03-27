@@ -6,10 +6,10 @@ const router = express.Router()
 
 router.post('/:tourId', verifyUser, createReview)
 
-router.get('/', getAllReview)
+router.get('/', verifyUser, getAllReview)
 
-router.put('/', updateReview);
+router.put('/', verifyUser, updateReview);
 
-router.delete('/', deleteReview);
+router.delete('/', verifyUser, deleteReview);
 
 export default router

@@ -11,7 +11,7 @@ class UserRepository {
         }
     }
 
-    async updateUser(userData,id) {
+    async updateUser(userData, id) {
         try {
             return await User.findByIdAndUpdate(id, { $set: userData }, { new: true });
         } catch (err) {

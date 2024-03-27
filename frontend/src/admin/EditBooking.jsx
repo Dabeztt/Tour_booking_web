@@ -3,12 +3,12 @@ import { BASE_URL } from '../utils/config.js';
 import '../styles/admin.css';
 
 const EditBooking = () => {
-    const [booking, setBooking] = useState([]);
+    const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchBooking = async () => {
+        const fetchBookings = async () => {
             try {
                 const res = await fetch(`${BASE_URL}/booking`, {
                     method: 'GET',
@@ -16,11 +16,11 @@ const EditBooking = () => {
                 });
 
                 if (!res.ok) {
-                    throw new Error('Failed to fetch booking');
+                    throw new Error('Failed to fetch bookings');
                 }
 
                 const result = await res.json();
-                setBooking(result.data);
+                setBookings(result.data);
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -28,7 +28,7 @@ const EditBooking = () => {
             }
         };
 
-        fetchBooking();
+        fetchBookings();
     }, []);
 
     const handleAddBooking = async () => {
@@ -43,8 +43,7 @@ const EditBooking = () => {
             }
 
             const newBooking = await res.json();
-
-            setBooking([booking, newBooking]);
+            setBookings([...bookings, newBooking]);
         } catch (error) {
             setError(error.message);
         }
@@ -57,7 +56,7 @@ const EditBooking = () => {
                 credentials: 'include',
             });
 
-            setBooking(booking.filter(booking => booking._id !== id));
+            setBookings(bookings.filter(booking => booking._id !== id));
         } catch (error) {
             setError(error.message);
         }
@@ -74,11 +73,11 @@ const EditBooking = () => {
                     <h2>Đang tải...</h2>
                 ) : error ? (
                     <p className="error-message">{error}</p>
-                ) : booking.length === 0 ? (
+                ) : bookings.length === 0 ? (
                     <p>Không tìm thấy</p>
                 ) : (
                     <ul>
-                        {booking.map((booking) => (
+                        {bookings.map((booking) => (
                             <li key={booking._id}>
                                 <p>Tour ID: {booking._id}</p>
                                 <p>User Email: {booking.userEmail}</p>

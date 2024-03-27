@@ -34,8 +34,7 @@ const TourBooked = () => {
                 credentials: 'include',
             });
 
-            // Sử dụng callback function để đảm bảo rằng state mới được cập nhật dựa trên state trước đó
-            setBookedTours(prevBookedTours => prevBookedTours.filter(tour => tour._id !== id));
+            setBookedTours(bookedTours.filter(bookedTours => bookedTours._id !== id));
         } catch (error) {
             console.error(error.message);
         }
@@ -45,14 +44,14 @@ const TourBooked = () => {
         <div className='tourBooked'>
             <h1>Các tour đã đặt</h1>
             <ul>
-                {bookedTours.map((tour) => (
-                    <li key={tour._id}>
-                        <p>Tour Name: {tour.tourName}</p>
-                        <p>Full Name: {tour.fullName}</p>
-                        <p>Guest Size: {tour.guestSize}</p>
-                        <p>Phone: {tour.phone}</p>
-                        <p>Booking Date: {new Date(tour.bookAt).toLocaleDateString()}</p>
-                        <button className="cancelButton" onClick={() => handleDeleteBookedTour(tour._id)}>Huỷ tour</button>
+                {bookedTours.map((booked) => (
+                    <li key={booked._id}>
+                        <p>Tour Name: {booked.tourName}</p>
+                        <p>Full Name: {booked.fullName}</p>
+                        <p>Guest Size: {booked.guestSize}</p>
+                        <p>Phone: {booked.phone}</p>
+                        <p>Booking Date: {new Date(booked.bookAt).toLocaleDateString()}</p>
+                        <button className="cancelButton" onClick={() => handleDeleteBookedTour(booked._id)}>Huỷ tour</button>
                     </li>
                 ))}
             </ul>

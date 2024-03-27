@@ -1,12 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import Booking from "./Booking.jsx";
-import ThankYou from "../../Pages/ThankYou.jsx"
+import ThankYou from "../../Pages/ThankYou.jsx";
 
 const PayPalCheckout = ({ totalAmount }) => {
     const paypal = useRef();
     const [transactionStatus, setTransactionStatus] = useState(null);
 
     useEffect(() => {
+        if (paypal.current) {
+            paypal.current.innerHTML = '';
+        }
+
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
                 return actions.order.create({
@@ -15,7 +19,7 @@ const PayPalCheckout = ({ totalAmount }) => {
                         {
                             description: "Tour Booking",
                             amount: {
-                                currency_code: "VND",
+                                currency_code: "USD",
                                 value: totalAmount.toString()
                             }
                         }

@@ -10,8 +10,8 @@ router.get('/:id', verifyUser, getBooking)
 
 router.get('/', verifyAdmin, getAllBooking)
 
-router.get('/', updateBooking)
+router.get('/', verifyUser, updateBooking)
 
-router.get('/', deleteBooking)
+router.get('/', verifyUser, deleteBooking)
 
 export default router

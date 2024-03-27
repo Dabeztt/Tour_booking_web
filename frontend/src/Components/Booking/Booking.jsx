@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import "./booking.css";
-import { Form, FormGroup, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, Form, FormGroup, ListGroup, ListGroupItem } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { BASE_URL } from '../../utils/config';
@@ -106,8 +106,11 @@ const Booking = ({ tour, avgRating, serviceFee, insuranceFee }) => {
                         <span>{totalAmount}đ</span>
                     </ListGroupItem>
                 </ListGroup>
+                <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+                    Đặt ngay
+                </Button>
 
-                <PayPalCheckout onSuccess={handleClick} totalAmount={totalAmount} />
+                <PayPalCheckout onClick={handleClick} totalAmount={totalAmount} />
             </div>
         </div>
     )
