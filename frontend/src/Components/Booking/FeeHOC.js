@@ -9,5 +9,3 @@ const withFees = (Component) => {
 };
 
 export default withFees;
-
-//Higher Order Component (HOC) pattern

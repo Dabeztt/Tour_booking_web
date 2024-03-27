@@ -75,6 +75,30 @@
     margin-top: 1rem;
 }
 
+.payment-options input[type="radio"] {
+  display: none;
+}
+
+.payment-options label {
+  display: inline-block;
+  margin-right: 10px; 
+  cursor: pointer;
+}
+
+.payment-options label::before {
+  content: '';
+  display: inline-block;
+  width: 20px; 
+  height: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 50%;
+  margin-right: 5px; 
+}
+
+.payment-options input[type="radio"]:checked + label::before {
+  background-color: #007bff; 
+}
+
 .total h5, .total span {
     color: var(--heading-color) !important;
     font-weight: 700 !important;

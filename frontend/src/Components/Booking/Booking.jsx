@@ -22,6 +22,8 @@ const Booking = ({ tour, avgRating, serviceFee, insuranceFee }) => {
         bookAt: ''
     });
 
+    const [paymentOption, setPaymentOption] = useState('direct');
+
     const handleChange = e => {
         setBooking(prev => ({ ...prev, [e.target.id]: e.target.value }));
     }
@@ -64,7 +66,7 @@ const Booking = ({ tour, avgRating, serviceFee, insuranceFee }) => {
             <div className="booking__top d-flex align-items-center justify-content-between">
                 <h3>{price}đ <span> /người</span></h3>
                 <span className="tour__rating d-flex align-items-center ">
-                    <i class="ri-star-fill" > </i>
+                    <i className="ri-star-fill" > </i>
                     {avgRating === 0 ? null : avgRating} ({reviews?.length})
                 </span>
             </div>
@@ -89,7 +91,7 @@ const Booking = ({ tour, avgRating, serviceFee, insuranceFee }) => {
                 <ListGroup>
                     <ListGroupItem className="border-0 px-0">
                         <h5 className="d-flex align-items-center gap-1">
-                            {price}đ <i class="ri-close-line"></i> 1 người
+                            {price}đ <i className="ri-close-line"></i> 1 người
                         </h5>
                         <span>{price}đ</span>
                     </ListGroupItem>
@@ -106,11 +108,36 @@ const Booking = ({ tour, avgRating, serviceFee, insuranceFee }) => {
                         <span>{totalAmount}đ</span>
                     </ListGroupItem>
                 </ListGroup>
-                <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
-                    Đặt ngay
-                </Button>
 
-                <PayPalCheckout onClick={handleClick} totalAmount={totalAmount} />
+                <div className="payment-options">
+                    <input
+                        type="radio"
+                        id="direct"
+                        name="paymentOption"
+                        value="direct"
+                        checked={paymentOption === 'direct'}
+                        onChange={() => setPaymentOption('direct')}
+                    />
+                    <label htmlFor="direct">Thanh toán trực tiếp</label>
+
+                    <input
+                        type="radio"
+                        id="paypal"
+                        name="paymentOption"
+                        value="paypal"
+                        checked={paymentOption === 'paypal'}
+                        onChange={() => setPaymentOption('paypal')}
+                    />
+                    <label htmlFor="paypal">Thanh toán PayPal</label>
+                </div>
+
+                {paymentOption === 'direct' ? (
+                    <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+                        Đặt ngay
+                    </Button>
+                ) : (
+                    <PayPalCheckout onClick={handleClick} totalAmount={totalAmount} />
+                )}
             </div>
         </div>
     )
