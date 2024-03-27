@@ -1,10 +1,18 @@
 import User from '../models/User.js';
 
 class UserRepository {
+    constructor() {
+        if (!UserRepository.instance) {
+            this.userModel = User;
+            UserRepository.instance = this;
+        }
+        return UserRepository.instance;
+    }
+
     async createUser(userData) {
         const { username, email, password, photo, role } = userData;
         try {
-            const newUser = new User({ username, email, password, photo, role });
+            const newUser = new this.userModel({ username, email, password, photo, role });
             return await newUser.save();
         } catch (err) {
             throw err;
@@ -13,7 +21,7 @@ class UserRepository {
 
     async updateUser(userData, id) {
         try {
-            return await User.findByIdAndUpdate(id, { $set: userData }, { new: true });
+            return await this.userModel.findByIdAndUpdate(id, { $set: userData }, { new: true });
         } catch (err) {
             throw err;
         }
@@ -21,7 +29,7 @@ class UserRepository {
 
     async deleteUser(id) {
         try {
-            return await User.findByIdAndDelete(id);
+            return await this.userModel.findByIdAndDelete(id);
         } catch (err) {
             throw err;
         }
@@ -29,7 +37,7 @@ class UserRepository {
 
     async getSingleUser(id) {
         try {
-            return await User.findById(id);
+            return await this.userModel.findById(id);
         } catch (err) {
             throw err;
         }
@@ -37,7 +45,7 @@ class UserRepository {
 
     async getAllUsers() {
         try {
-            return await User.find({});
+            return await this.userModel.find({});
         } catch (err) {
             throw err;
         }
